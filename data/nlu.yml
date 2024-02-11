@@ -1,0 +1,125 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+# - intent: deny
+#   examples: |
+#     - no
+#     - n
+#     - never
+#     - I don't think so
+#     - don't like that
+#     - no way
+#     - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - OK
+
+
+- intent: start_shopping
+  examples: |
+    - Let's start Shopping
+    - Let's start buying
+    - I want to continue buying
+    - I want to buy T-shirts and Pants
+    - I want to buy T-shirts
+    - I want to buy Pants
+    - show me Tshirts and Pants
+    - Can I buy more tshirts and pants
+
+
+- intent: inform
+  examples: |
+    - I'm looking for a [Round Neck T-shirt](tshirt_category)
+    - I want a [Collared T-shirt](tshirt_category)
+    - It's a [Round Neck T-shirt](tshirt_category) that I need
+    - Just looking for something simple like a [Collared T-shirt](tshirt_category)
+    - I'm looking for a [Jeans](pants_category)
+    - I want a [Trousers](pants_category)
+    - It's a [Jeans](pants_category) that I need
+    - Just looking for something simple like a [Trousers](pants_category)
+    - It's a [Ringer-Tee](tshirt_category) that I need
+    - Just looking for something simple like a [Ringer-Tee](tshirt_category)
+    - I'm looking for a [Ringer-Pants](pants_category)
+    - I want a [Ringer-Pants](pants_category)

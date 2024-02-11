@@ -1,0 +1,7 @@
+slot names:
+    tshirt_count
+    tshirt_category
+    pants_count
+    pants_category
+
+intent name - start_shopping

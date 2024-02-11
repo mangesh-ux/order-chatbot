@@ -1,0 +1,73 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: thanks
+  steps:
+  - intent: thanks
+  - action: utter_welcome
+  - action: utter_goodbye
+
+
+- story: interactive_story_1
+  steps:
+  - intent: start_shopping
+  - action: order_form
+  - active_loop: order_form
+  - slot_was_set:
+    - requested_slot: tshirt_category
+  - slot_was_set:
+    - tshirt_category: Round-Neck-Tee
+  - slot_was_set:
+    - requested_slot: tshirt_count
+  - slot_was_set:
+    - tshirt_count: 2
+  - slot_was_set:
+    - requested_slot: pants_category
+  - slot_was_set:
+    - pants_category: Jeans
+  - slot_was_set:
+    - requested_slot: pants_count
+  - slot_was_set:
+    - pants_count: 0
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit

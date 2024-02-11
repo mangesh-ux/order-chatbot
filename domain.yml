@@ -1,0 +1,144 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - thanks
+  - start_shopping
+  - inform
+
+forms:
+  order_form:
+    required_slots:
+      - tshirt_category
+      - tshirt_count
+      - pants_category
+      - pants_count
+
+entities:
+  - tshirt_category
+  - pants_category
+
+slots:
+  tshirt_count:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: order_form
+           requested_slot: tshirt_count
+  tshirt_category:
+    type: categorical
+    values:
+      - Round-Neck-Tee
+      - Collared-Tee
+      - Ringer-Tee
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: tshirt_category
+        conditions:
+         - active_loop: order_form
+           requested_slot: tshirt_category
+  pants_count:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: order_form
+           requested_slot: pants_count
+  pants_category:
+    type: categorical
+    values:
+      - Jeans
+      - Trousers
+      - Ringer-Pants
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: pants_category
+        conditions:
+         - active_loop: order_form
+           requested_slot: pants_category
+
+responses:
+  utter_greet:
+  - text: "👋 Hey there! Welcome to Thrifty Trendzz, I'm Thriffina 👱🏻‍♀️, your personal shopping assistant. Whether you're looking for the perfect pair of pants or a comfy T-shirt, I'm here to help you find exactly what you need! 😊 How can I assist you today??"
+    buttons:
+      - payload: start_shopping
+        title: Let's Start Shopping
+  
+  utter_continue:
+  - text: "It seems you haven't selected any items for your order. How would you like to continue?"
+    buttons:
+      - payload: start_shopping
+        title: Let's Start Shopping
+  
+  utter_ask_tshirt_category:
+  - text: Which category of t-shirt are you looking for?
+    buttons: 
+      - payload: /select_tshirt_category Round-Neck-Tee
+        title: Round Neck T-shirt
+      - payload: /select_tshirt_category Collared-Tee
+        title: Collared T-shirt
+      - payload: /select_tshirt_category Ringer-Tee
+        title: I'm not looking for a T-shirt
+
+  utter_ask_tshirt_count:
+  - text: How many t-shirts do you want to buy? 🛒 If you're not looking to buy T-shirts right now, simply enter '0'
+
+  utter_ask_pants_category:
+  - text: Which category of pants are you looking for?
+    buttons: 
+      - payload: /select_pants_category Jeans
+        title: Jeans
+      - payload: /select_pants_category Trousers
+        title: Trousers
+      - payload: /select_pants_category Ringer-Pants
+        title: I'm not looking for Pants
+  utter_ask_pants_count:
+  - text: How many pants do you want to buy? 🛒 If you're not looking to buy pants right now, simply enter '0'
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, Created By Mangesh Gupta."
+
+  utter_ask_location:
+  - text: of where?
+  - text: In what city?
+
+  utter_ask_train:
+  - text: Which train are you looking for?
+
+  utter_getting_weather:
+  - text: Ok, getting weather of {location} ...
+
+  utter_welcome:
+  - text: Welcome 
+
+actions:
+- validate_order_form
+- action_submit
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
